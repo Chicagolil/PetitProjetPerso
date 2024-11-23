@@ -563,3 +563,56 @@ const modifiedUser = { ...user, age: 30 };
 
 console.log(updatedUser);  // { name: "Alice", age: 25, country: "France" }
 console.log(modifiedUser); // { name: "Alice", age: 30 }
+
+
+
+_________________________________________________________________________________________________________________________________________
+
+C'est quoi contexte API ? 
+
+c'est un state manager 
+
+La Context API est une fonctionnalité native de React qui permet de partager des données entre différents composants sans avoir à les 
+transmettre manuellement à travers les props 
+
+Elle facilite la gestion de données globales comme les thèmes, les utilisateurs connectés ou les paramètres de configuration.
+
+Pourquoi utiliser la Context API ?
+
+Éviter le "prop drilling" :
+
+Le "prop drilling" consiste à transmettre des props à plusieurs niveaux d'une 
+hiérarchie de composants, même si certains composants intermédiaires n'en ont 
+pas besoin. 
+La Context API élimine ce problème en permettant un accès direct aux 
+données partagées.
+
+
+Gestion des données globales :
+Idéal pour les données accessibles par plusieurs composants 
+(exemple : thèmes, authentification, préférences utilisateur).
+
+
+Comment fonctionne la Context API ?
+
+1. Création d'un contexte
+On crée un contexte avec la méthode React.createContext.
+
+2. Fournir des données (Provider)
+Le contexte utilise un composant Provider qui enveloppe 
+les composants enfants et leur fournit les données.
+
+3. Consommer des données (Consumer ou useContext)
+Les composants enfants peuvent accéder aux données du contexte 
+via un "consumer" ou, plus simplement, avec le hook useContext.
+
+_________________________________________________________________________________________________________________________________________
+
+C'est quoi nanoId ? 
+
+
+nanoid est une bibliothèque JavaScript légère utilisée pour générer 
+des identifiants uniques (ID) rapides et sécurisés. Elle est souvent 
+utilisée dans des applications web ou mobiles pour créer des identifiants 
+uniques pour des objets,
+

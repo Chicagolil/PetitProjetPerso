@@ -4,9 +4,9 @@ import Button from "./Button";
 export default function Navbar() {
   const liens = [
     { texte: "Accueil", chemin: "/" },
-    { texte: "Tous les personnages ", chemin: "/tous-les-personnages" },
-
+    { texte: "Personnages de l'api", chemin: "/personnages-api" },
     { texte: "Personnages Locaux", chemin: "/personnages-locaux" },
+    { texte: "Tout les Personnages", chemin: "/tous-les-personnages" },
   ];
   return (
     <nav className="p-4 mb-3 border-2 border-bottom customShadow">

@@ -3,6 +3,7 @@ import SidesInput from "../components/formComponents/SidesInput";
 import ImageInput from "../components/formComponents/ImageInput";
 import ClassicInput from "../components/formComponents/ClassicInput";
 import { toast } from "sonner";
+import { nanoid } from "nanoid";
 
 export default function CreateCharacter() {
   const [name, setName] = useState("");
@@ -16,6 +17,7 @@ export default function CreateCharacter() {
     e.preventDefault();
     //Création
     const newCharacter = {
+      id: nanoid(6),
       name,
       image,
       health: parseInt(health),

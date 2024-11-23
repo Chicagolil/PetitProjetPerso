@@ -1,17 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
+import { CharactersContext } from "../context/CharactersContext";
 
 export default function LocalCharactersPage() {
-  const [personnages, setPersonnages] = useState([]);
-  function recupererPersonnages() {
-    setPersonnages(JSON.parse(localStorage.getItem("personnages")) || []);
-  }
+  const { localCharacters } = useContext(CharactersContext);
 
   useEffect(() => {
-    recupererPersonnages();
-  }, []);
-
+    console.log(localCharacters);
+  }, [localCharacters]);
   return (
     <div>
       <h1 className="text-4xl mb-6 text-center">Personnages Locaux</h1>
@@ -23,7 +20,7 @@ export default function LocalCharactersPage() {
         </Link>
       </div>
       <div className="flex items-center justify-center gap-8 flex-wrap ">
-        {personnages.map((elem, index) => (
+        {localCharacters.map((elem, index) => (
           <Card key={index} infosPerso={elem} />
         ))}
       </div>

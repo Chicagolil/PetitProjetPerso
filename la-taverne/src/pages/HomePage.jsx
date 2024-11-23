@@ -1,35 +1,40 @@
 import Card from "../components/Card";
+import { useContext, useEffect } from "react";
+import { CharactersContext } from "../context/CharactersContext";
 
 export default function HomePage() {
-  const pathImg = "src/assets/images/personnages/";
-  const toutLesPersonnages = [
-    {
-      image: pathImg + "heros.jpg",
-      name: "Kikisan",
-      health: 50,
-      magic: 10,
-      power: 40,
-      from: "manualData",
-      side: "light",
-    },
-    {
-      image: pathImg + "magicienne.jpg",
-      name: "Flobie",
-      health: 40,
-      magic: 60,
-      power: 20,
-      from: "manualData",
-      side: "angel",
-    },
-  ];
+  const {
+    valeurTest,
+    setValeurTest,
+    doubleValeurTest,
+    hardCharacters,
+    setHardCharacters,
+  } = useContext(CharactersContext);
+
+  //  useEffect(() => {
+  //    console.log(hardCharacters);
+  //  }, [hardCharacters]);
+
   return (
     <>
-      <h1 className="font-bold ">Coucou les loosers</h1>
       <div className="flex items-center justify-center gap-8 flex-wrap ">
-        {toutLesPersonnages.map((elem, index) => (
+        {hardCharacters.map((elem, index) => (
           <Card key={index} infosPerso={elem} />
         ))}
       </div>
+      <p className="mt-6">Notre valeur test est de : {valeurTest} </p>
+      <button
+        onClick={() => setValeurTest(valeurTest + 5)}
+        className="p-4 m-4 text-white rounded-lg bg-neutral-500 "
+      >
+        Valeur Test + 5
+      </button>
+      <button
+        onClick={() => doubleValeurTest()}
+        className="p-4 m-4 text-white rounded-lg bg-neutral-500 "
+      >
+        Double la Valeur Test{" "}
+      </button>
     </>
   );
 }
