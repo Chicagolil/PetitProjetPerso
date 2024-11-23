@@ -1,0 +1,565 @@
+Ptit Document ou je ferais d'éventuels rappels théoriques si c'est nécessaire
+
+On va initialiser le projet avec vite et non create react app car c'est plus rapide askip 
+
+C'est quoi tailwind et c'est quoi vite ? 
+
+Tailwind.css :
+_________________________________________________________________________________________________________________________________________
+
+c'est un framework css utilitaire, contrairement à d'autres frameworks comme bootstrap qui offrent 
+composants prédéfinis(boutons, cartes, etc.), Tailwind fournit des classes utilitaires prédéfinies 
+pour appliquer des styles directement dans le HTML 
+
+
+doc de tailwind : https://tailwindcss.com/docs/guides/vite 
+
+vite : 
+
+outil de développement JavaScript moderne conçu pour améliorer la rapidité et 
+l'efficacité du développement d'applications web
+_________________________________________________________________________________________________________________________________________
+
+
+C'est quoi js, jsx, ts et tsx ? 
+
+1. JS (JavaScript)
+JavaScript (JS) est un langage de programmation interprété, principalement utilisé pour ajouter 
+de l'interactivité et des fonctionnalités dynamiques aux pages web.
+
+ex : 
+console.log("Hello, World!");
+
+2. JSX (JavaScript XML)
+JSX est une extension syntaxique pour JavaScript qui permet d'écrire du HTML dans du JavaScript. 
+Elle est principalement utilisée avec React pour définir la structure d'une interface utilisateur.
+
+ex : 
+
+const App = () => {
+  return <h1>Hello, World!</h1>;
+};
+
+
+3. TS (TypeScript)
+TypeScript (TS) est une surcouche de JavaScript qui ajoute des types statiques. 
+Cela permet de détecter les erreurs plus tôt (lors de la compilation) et rend le code plus 
+robuste et maintenable.
+
+ex : 
+
+const greet = (name: string): string => {
+  return `Hello, ${name}`;
+};
+
+console.log(greet("World"));
+
+
+4. TSX (TypeScript XML)
+TSX est à TypeScript ce que JSX est à JavaScript. 
+C'est une extension syntaxique qui combine TypeScript et JSX, utilisée principalement avec React.
+
+
+ex : 
+
+interface AppProps {
+  name: string;
+}
+
+const App: React.FC<AppProps> = ({ name }) => {
+  return <h1>Hello, {name}!</h1>;
+};
+
+export default App;
+
+
+_________________________________________________________________________________________________________________________________________
+
+C'est quoi React ? 
+
+
+React est une bibliothèque JavaScript open-source, créée par Facebook, utilisée pour construire des 
+interfaces utilisateur (UI). Elle permet aux développeurs de concevoir des applications web ou 
+mobiles composables, maintenables et performantes en mettant l'accent sur les composants.
+
+Caractéristiques de react : 
+
+Basée sur des composants :
+
+comme des briques de légo, réutilisables
+rpz une partie de l'interface utilisateur (comme un bouton, une carte, ou un formulaire) 
+et peut avoir son propre état et comportement.
+
+Virtual DOM :
+React utilise un DOM virtuel pour minimiser les interactions directes avec le DOM réel.
+Lorsqu'un changement se produit, React met à jour uniquement les parties du DOM qui en ont besoin
+Super pour les perf 
+
+Unidirectional Data Flow (Flux de données unidirectionnel) :
+Les données dans React circulent toujours d'un composant parent vers ses enfants à l'aide des props.
+Cela garantit un flux de données clair et prévisible, facilitant le débogage.
+
+JSX (JavaScript XML) :
+React introduit une syntaxe appelée JSX pour mélanger JavaScript et HTML dans le même fichier. 
+Cela rend le code plus lisible et maintenable.
+
+Gestion de l'état (State Management) :
+Chaque composant peut gérer son propre état (state) pour suivre les données qui changent dynamiquement.
+
+Écosystème riche :
+
+React ne gère que l'interface utilisateur, mais son écosystème est vaste, avec des outils comme :
+    React Router pour la navigation.
+    Redux ou Context API pour la gestion d'état global.
+    Next.js pour le rendu côté serveur (SSR) et les applications web modernes.
+
+
+_________________________________________________________________________________________________________________________________________
+
+
+C'est quoi les fragments react ? 
+
+permet de regrouper plusieurs éléments enfants sans introduire de nœud supplémentaire dans le DOM
+aide à garder le DOM propre et évite l'utilisation inutile de balises supplémentaires comme <div>
+
+ils sont notés : <> </> 
+
+_________________________________________________________________________________________________________________________________________
+
+C'est quoi React Router Dom ? 
+
+React Router DOM est une bibliothèque utilisée pour la gestion de la navigation et du routage dans 
+les applications React, permettant de créer des applications web monopage (SPA) avec des 
+interfaces dynamiques et des URL adaptées.
+
+Dans une application React classique, tout le contenu est chargé dans une seule page HTML. 
+React Router DOM permet :
+- De simuler une navigation entre différentes pages tout en restant sur une seule page (SPA).
+- De gérer les URL, ce qui améliore l'expérience utilisateur et l'accessibilité.
+- De charger différents composants en fonction de l'URL.
+
+Caractéristiques Principales : 
+
+Routage dynamique : 
+React Router DOM permet de définir des routes dynamiques basées sur les URL.
+ex : / => page d'accueil 
+
+Navigation déclarative :
+La navigation est gérée par des composants React comme <Link> ou <NavLink>, plutôt que par des 
+balises HTML classiques comme <a>.
+
+Routes imbriquées :
+Vous pouvez créer des routes à plusieurs niveaux (exemple : /dashboard/settings).
+
+Composants spécifiques aux routes :
+Les routes ne rendent que les composants définis pour une URL donnée.
+
+Gestion de l'historique (History Management) :
+React Router DOM s'intègre avec l'historique du navigateur pour permettre la navigation en 
+avant/arrière via les boutons de navigation.
+
+_________________________________________________________________________________________________________________________________________
+
+C'est quoi usestate ? 
+
+useState est un hook fourni par React qui permet d'ajouter un état local à un composant fonctionnel.
+
+Les états permettent de gérer des données dynamiques dans un composant, comme le 
+suivi des interactions utilisateur, la modification des données ou le contrôle de l'affichage.
+
+
+Comment utiliser useState ?
+
+useState est importé depuis React, et il retourne deux valeurs :
+
+La valeur actuelle de l'état.
+Une fonction pour mettre à jour cet état.
+
+syntaxe : 
+const [state, setState] = useState(initialValue);
+
+state : La valeur actuelle de l'état.
+setState : Une fonction qui met à jour l'état.
+initialValue : La valeur initiale de l'état.
+
+
+ex simple : 
+
+import React, { useState } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0); // Initialisation de l'état avec 0
+
+  return (
+    <div>
+      <p>Compteur : {count}</p>
+      <button onClick={() => setCount(count + 1)}>Incrémenter</button>
+    </div>
+  );
+};
+
+export default Counter;
+
+
+useState(0) initialise l'état count à 0.
+setCount est utilisé pour mettre à jour la valeur de count.
+Chaque clic sur le bouton appelle setCount(count + 1), ce qui incrémente le compteur.
+
+
+Qqles points importants
+
+L'état est persistant :
+L'état est sauvegardé entre les rendus. Par exemple, 
+lorsque le composant est réaffiché, la valeur de l'état reste la même.
+
+setState ne modifie pas immédiatement l'état :
+React planifie la mise à jour et réaffiche le composant après que l'état soit modifié. 
+La nouvelle valeur sera disponible au prochain rendu.
+
+_________________________________________________________________________________________________________________________________________
+
+C'est quoi un hook ? 
+
+
+En React, un hook est une fonctionnalité introduite à partir de la version 16.8 qui permet d'ajouter 
+des fonctionnalités comme l'état local ou les effets de cycle de vie dans les composants fonctionnels.
+
+
+Les hooks simplifient le développement en évitant d'avoir à utiliser des composants de classe pour 
+gérer certaines fonctionnalités.
+
+
+Avec les hooks :
+
+Les composants fonctionnels peuvent avoir les mêmes capacités que les composants de classe.
+Le code devient plus simple et lisible, avec moins de complexité et de boilerplate
+
+Les hooks les plus courants
+
+
+useState (Gérer l'état local)
+Permet de déclarer et de gérer un état local dans un composant fonctionnel.
+
+useEffect (Effets de cycle de vie)
+Permet d'effectuer des effets secondaires comme la récupération de données, 
+l'abonnement à un événement, ou la mise à jour du DOM.
+
+
+useContext (Accéder au contexte global)
+Permet d'utiliser le Context API pour partager des données globales dans une application.
+
+
+useRef (Références directes au DOM ou stockage mutable)
+Permet de créer une référence mutable pour accéder à un élément DOM ou stocker 
+une valeur qui ne déclenche pas de rendu lorsqu'elle est modifiée.
+
+useReducer (Gestion avancée de l'état)
+Une alternative à useState pour gérer des états complexes ou des mises à 
+jour impliquant plusieurs actions.
+
+
+_________________________________________________________________________________________________________________________________________
+
+c'est quoi une propriété dans react ? 
+
+
+En React, une propriété est un mécanisme utilisé pour transmettre des données 
+d'un composant parent à un composant enfant. 
+Les propriétés sont immuable, càd qu'elles ne peuvent pas être modifiées par le 
+composant qui les reçois. 
+
+
+permettent de personnaliser le comportement ou l'apparence d'un 
+composant en fonction des données fournies par son parent.
+
+rôle essentiel pour rendre les composants réutilisables et dynamiques.
+
+
+
+Les props sont immuables, ce qui signifie qu'un composant enfant ne peut pas modifier 
+directement les props qu'il reçoit. Cela garantit que les données circulent dans une 
+direction unidirectionnelle (du parent vers l'enfant), rendant les applications plus 
+prévisibles.
+
+props-drilling : faire descendre des données via les propriétés sur plusieurs générations de 
+composants 
+_________________________________________________________________________________________________________________________________________
+
+quest ce qu'un children en react ? 
+
+une propriété spéciale incluse par défaut dans l'objet props d'un composant. 
+Elle représente le contenu (ou les éléments enfants) passé entre les balises 
+ouvrantes et fermantes d'un composant.
+
+_________________________________________________________________________________________________________________________________________
+
+
+Comment est organisé mon router react dans mon projet SPA taverne 
+
+App.jsx
+
+c'est ici que mon routeur est crée avec  createBrowserRouter()
+
+
+dedans on va mettre les différentes routes qui vont dicter la structure de la SPA
+
+path : Définit l'URL associée à une route.
+element : Indique quel composant sera affiché pour cette route.
+children : 
+  Définit les sous-routes qui héritent de la route parent. 
+  Les composants enfants seront rendus à l'emplacement désigné par un composant Outlet 
+
+
+
+RouterProvider : Composant de React Router qui prend 
+en charge le routeur créé (ici router avec createBrowserRouter).
+
+
+Layout.jsx
+
+Navbar et Footer : sont rendus sur toutes les pages
+
+Outlet :
+C'est ici que les composants enfants définis dans children (dans la configuration des routes) 
+seront affichés.
+
+Par exemple :
+Si l'utilisateur visite /, HomePage sera rendu dans cet Outlet.
+Si l'utilisateur visite /tous-les-personnages, AllCharacters sera rendu à la place.
+
+
+Comportement des Routes
+Route principale (/) :
+path: "/" avec element: <Layout /> :
+Le composant Layout est affiché pour la racine /.
+À l'intérieur de Layout, Outlet rend le composant HomePage (défini dans children).
+
+
+Route /tous-les-personnages :
+Lorsque l'utilisateur visite /tous-les-personnages, React Router rend :
+Le composant Layout comme structure principale.
+Le composant AllCharacters à l'emplacement de l'Outlet.
+
+Route joker (/*) :
+Toute route non définie (/*) affiche Errorpage dans l'Outlet.
+
+_________________________________________________________________________________________________________________________________________
+
+c'est quoi Link et NavLink? 
+
+deux composants fournis par React Router pour gérer la navigation dans 
+une application React sans provoquer de rechargement de la page
+
+
+Le composant Link permet de naviguer entre les différentes pages d'une application 
+sans recharger toute la page. Il remplace la balise HTML <a> dans les applications React, 
+car cette dernière provoque un rechargement complet du navigateur.
+
+NavLink est une version avancée de Link. En plus de permettre la navigation, 
+il peut appliquer des classes CSS dynamiques 
+ou des styles spécifiques en fonction de la route active.
+
+_________________________________________________________________________________________________________________________________________
+
+appel d'une api ? 
+
+on peut le faire via une fonction fetch, est une API native de JavaScript utilisée 
+pour effectuer des requêtes HTTP et interagir avec des ressources distantes, 
+comme des API REST
+
+Caractéristiques principales de fetch() : 
+
+Promesse :
+fetch() retourne une promesse qui se résout avec la réponse 
+(response) lorsque la requête HTTP est terminée
+
+La promesse est rejetée uniquement si une erreur 
+réseau survient (par exemple, si le serveur est inaccessible).
+
+La méthode fonctionne de manière asynchrone, ce qui signifie que le reste du 
+programme peut continuer à s'exécuter pendant que la requête est effectuée.
+
+_________________________________________________________________________________________________________________________________________
+
+c'est quoi le useEffect  ? 
+
+useEffect est un hook fourni par React qui permet d'exécuter des effets secondaires dans les composants fonctionnels. Il est souvent utilisé pour gérer des tâches comme :
+
+La récupération de données depuis une API.
+L'abonnement à des événements (scroll, resize, etc.).
+La manipulation directe du DOM.
+L'exécution de fonctions lors du montage ou de la mise à jour du composant.
+
+
+
+Avant l'introduction des hooks, ces tâches étaient réalisées dans des composants de classe en utilisant 
+des méthodes de cycle de vie comme componentDidMount, componentDidUpdate, et componentWillUnmount. 
+Avec useEffect, les composants fonctionnels peuvent également gérer ces tâches, simplifiant ainsi le code.
+
+
+useEffect(() => {
+  // Code à exécuter
+});
+
+Le callback (fonction passée en premier argument) contient le code à exécuter.
+Par défaut, useEffect s'exécute après chaque rendu du composant.
+
+
+Ex: 
+
+import { useEffect } from "react";
+
+const Example = () => {
+  useEffect(() => {
+    console.log("Le composant est rendu !");
+  });
+
+  return <h1>Bonjour React</h1>;
+}; 
+
+
+Effet avec dépendances
+on peut limiter l'exécution de l'effet à certaines conditions en utilisant un tableau de dépendances.
+
+import { useState, useEffect } from "react";
+
+const Counter = () => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    console.log(`Le compteur a changé : ${count}`);
+  }, [count]); // L'effet s'exécute uniquement lorsque `count` change
+
+  return (
+    <button onClick={() => setCount(count + 1)}>
+      Cliquez-moi ({count})
+    </button>
+  );
+};
+
+Dépendances ([count]) : L'effet sera exécuté uniquement lorsque la valeur de count change.
+Si le tableau est vide ([]), l'effet s'exécutera une seule fois, après le premier rendu du composant.
+
+
+
+_________________________________________________________________________________________________________________________________________
+
+C'est quoi le local storage ? 
+
+
+
+Le localStorage est une API Web fournie par les navigateurs modernes qui permet de stocker des données 
+clés-valeurs directement sur l'appareil de l'utilisateur. 
+Les données enregistrées dans le localStorage persistent même après la fermeture du navigateur ou 
+le redémarrage de l'appareil.
+
+Caractéristiques principales du localStorage
+
+Stockage persistant :
+Les données restent accessibles tant qu'elles ne sont pas explicitement supprimées ou que 
+l'utilisateur ne vide pas son cache.
+
+Basé sur des clés :
+Les données sont enregistrées sous forme de paires clé-valeur (comme un objet JavaScript).
+
+Limitation de taille :
+La capacité de stockage varie selon les navigateurs, mais est généralement d'environ 5 Mo par domaine.
+
+Accessible côté client uniquement :
+Les données du localStorage ne sont pas envoyées au serveur avec les requêtes HTTP.
+
+
+Soutenu par les navigateurs modernes :
+Pris en charge par la plupart des navigateurs (Chrome, Firefox, Safari, Edge, etc.).
+
+Comment on travaille avec le local storage ?
+
+setItem (clé, valeur) // enregistrer et/ou écraser une valeur
+getItem (clé)         // récupère une valeur 
+removeItem(clé)       // supprime la paire clé/valeur
+clear()               // vide le storage
+length                // nbre de clés stockées
+key(index)            // retourne la clé correspondante à l'index 
+
+_________________________________________________________________________________________________________________________________________
+ 
+
+C'est quoi sonner ? 
+
+
+Sonner est une bibliothèque utilisée principalement pour gérer et afficher des notifications 
+toast (des messages temporaires qui apparaissent dans l'interface utilisateur) dans des 
+projets web, souvent dans des applications React.
+
+_________________________________________________________________________________________________________________________________________
+
+JavaScript : c'est quoi le spread operator ? 
+
+Il est représenté par trois points ... et permet de décomposer ou étendre des objets ou 
+des tableaux dans des contextes où plusieurs éléments sont attendus.
+
+
+Utilisation avec les tableaux
+
+
+1. Combiner des tableaux
+Le spread operator peut être utilisé pour fusionner des tableaux ou ajouter 
+des éléments dans un nouveau tableau.
+
+const fruits = ["pomme", "banane"];
+const vegetables = ["carotte", "poivron"];
+
+// Fusionner les tableaux
+const food = [...fruits, ...vegetables];
+console.log(food); // ["pomme", "banane", "carotte", "poivron"]
+
+2. Copier un tableau
+Le spread operator permet de copier un tableau sans le modifier directement (shallow copy).
+
+const originalArray = [1, 2, 3];
+const copiedArray = [...originalArray];
+
+console.log(copiedArray); // [1, 2, 3]
+
+// Modifier le tableau copié n'affecte pas l'original
+copiedArray.push(4);
+console.log(originalArray); // [1, 2, 3]
+console.log(copiedArray);  // [1, 2, 3, 4]
+
+
+Utilisation avec les objets
+Le spread operator est également utile pour les objets .
+
+1. Combiner des objets
+Vous pouvez fusionner deux objets pour créer un nouvel objet.
+
+
+const user = { name: "Alice", age: 25 };
+const additionalInfo = { country: "France", occupation: "Developer" };
+
+const fullProfile = { ...user, ...additionalInfo };
+console.log(fullProfile);
+// { name: "Alice", age: 25, country: "France", occupation: "Developer" }
+
+2. Copier un objet
+Le spread operator crée une copie superficielle d'un objet.
+
+const originalObject = { a: 1, b: 2 };
+const copiedObject = { ...originalObject };
+
+console.log(copiedObject); // { a: 1, b: 2 }
+
+
+3. Ajouter ou remplacer des propriétés
+Lors de la décomposition d'un objet, vous pouvez ajouter ou modifier des propriétés.
+
+const user = { name: "Alice", age: 25 };
+
+// Ajouter une nouvelle propriété
+const updatedUser = { ...user, country: "France" };
+
+// Modifier une propriété existante
+const modifiedUser = { ...user, age: 30 };
+
+console.log(updatedUser);  // { name: "Alice", age: 25, country: "France" }
+console.log(modifiedUser); // { name: "Alice", age: 30 }
