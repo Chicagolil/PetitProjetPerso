@@ -7,6 +7,7 @@ import CreateCharacter from "./pages/CreateCharacter";
 import LocalCharactersPage from "./pages/LocalCharactersPage";
 import SpreadOp from "./pages/SpreadOp";
 import AllCharacters from "./pages/AllCharacters";
+import ModifyCharacter from "./pages/ModifyCharacter";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
       { path: "/tous-les-personnages", element: <AllCharacters /> },
       { path: "/spread", element: <SpreadOp /> },
       { path: "/*", element: <Errorpage /> },
+      { path: "/modification-personnage/:id", element: <ModifyCharacter /> },
     ],
   },
 ]);

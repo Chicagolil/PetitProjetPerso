@@ -6,7 +6,7 @@ import {
   addHardCharacters,
   addApiCharacters,
   addLocalCharacters,
-} from "../services/contexteFunctions";
+} from "../hooks/useContexteFunctions";
 // on initialise le contexte, un "ensemble" d'informations qu'on va
 // pouvoir diffuser dans l'application
 
@@ -48,6 +48,7 @@ const CharactersContextProvider = ({ children }) => {
         localCharacters,
         setLocalCharacters,
         allCharacters,
+        setAllCharacters,
       }}
     >
       {children}

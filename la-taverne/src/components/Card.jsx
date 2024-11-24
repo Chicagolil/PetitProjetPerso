@@ -1,13 +1,20 @@
 import { useState } from "react";
 import Statistiques from "./cardComponents/Statistiques";
 import Button from "./Button";
+import { useCharacterManager } from "../hooks/useCharactersManagers";
+import { Link } from "react-router-dom";
 
 export default function Card({ infosPerso }) {
+  const { deleteCharacter } = useCharacterManager();
   const Stats = [
     { stati: "Santé", valeure: infosPerso.health, unitee: "PV" },
     { stati: "Magie", valeure: infosPerso.magic, unitee: "PM" },
     { stati: "Puissance", valeure: infosPerso.power, unitee: "ATK" },
   ];
+
+  function foo() {
+    console.log("Bonjour");
+  }
   return (
     <div
       className={`flex flex-col border-2 border-neutral-500 w-[250px] h-[400px] rounded-xl  overflow-hidden ${infosPerso.side}Shadow`}
@@ -36,8 +43,22 @@ export default function Card({ infosPerso }) {
           ))}
         </div>
         <div className="flex justify-between mt-2">
-          <Button couleur="bg-blue-500"> Défendre</Button>
-          <Button couleur="bg-orange-500">Attaquer</Button>
+          {infosPerso.from === "LocalCharacter" ? (
+            <Link to={`/modification-personnage/${infosPerso.id}`}>
+              <Button couleur="bg-green-500">Modifier</Button>
+            </Link>
+          ) : (
+            <Button couleur="bg-green-500 cursor-not-allowed">
+              Non modifiable
+            </Button>
+          )}
+
+          <Button
+            couleur="bg-red-500"
+            fonctionOnclick={() => deleteCharacter(infosPerso.id)}
+          >
+            Supprimer
+          </Button>
         </div>
       </div>
     </div>

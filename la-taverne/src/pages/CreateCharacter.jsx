@@ -4,6 +4,7 @@ import ImageInput from "../components/formComponents/ImageInput";
 import ClassicInput from "../components/formComponents/ClassicInput";
 import { toast } from "sonner";
 import { nanoid } from "nanoid";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateCharacter() {
   const [name, setName] = useState("");
@@ -12,6 +13,7 @@ export default function CreateCharacter() {
   const [magic, setMagic] = useState("");
   const [power, setPower] = useState("");
   const [side, setSide] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -53,6 +55,7 @@ export default function CreateCharacter() {
     setMagic("");
     setPower("");
     setSide("");
+    navigate("/personnages-locaux");
   }
 
   return (
