@@ -52,3 +52,7 @@ export async function addApiCharacters(setApiCharacters) {
 export function addLocalCharacters(setLocalCharacters) {
   setLocalCharacters(JSON.parse(localStorage.getItem("personnages")) || []);
 }
+
+export function addFetchCharacters(setApiCharacters) {
+  addApiCharacters(setApiCharacters);
+}

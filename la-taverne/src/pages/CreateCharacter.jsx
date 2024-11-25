@@ -1,12 +1,14 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import SidesInput from "../components/formComponents/SidesInput";
 import ImageInput from "../components/formComponents/ImageInput";
 import ClassicInput from "../components/formComponents/ClassicInput";
 import { toast } from "sonner";
 import { nanoid } from "nanoid";
 import { useNavigate } from "react-router-dom";
+import { CharactersContext } from "../context/CharactersContext";
 
 export default function CreateCharacter() {
+  const { setLocalCharacters } = useContext(CharactersContext);
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
   const [health, setHealth] = useState("");
@@ -49,6 +51,7 @@ export default function CreateCharacter() {
     } else {
       toast.error("Il y a eu un problème, veuillez réesayer");
     }
+    setLocalCharacters(oldCharacters);
     setName("");
     setImage("");
     setHealth("");
